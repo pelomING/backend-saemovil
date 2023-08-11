@@ -11,6 +11,9 @@ import { TurnosModule } from './turnos/turnos.module';
 import { AyudantesModule } from './ayudantes/ayudantes.module';
 import { EventosModule } from './eventos/eventos.module';
 
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path'; // Importa el módulo 'path' de Node.js
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -19,6 +22,10 @@ import { EventosModule } from './eventos/eventos.module';
       dbName: process.env.MONGO_DB_NAME,
     }),
 
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'), // Ruta a la carpeta pública
+    }),
+    
     AuthModule,
 
     TurnosSaeModule,
