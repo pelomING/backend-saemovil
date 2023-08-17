@@ -14,6 +14,9 @@ export class User {
     @Prop({ minlength: 6, required: true })
     password?: string;
 
+    @Prop({ minlength: 10, required: true })
+    rut?: string;
+
     @Prop({ default: true })
     isActive: boolean;
 

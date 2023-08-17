@@ -61,9 +61,9 @@ export class AuthService {
 
   async login( loginDto: LoginDto ):Promise<LoginResponse> {
 
-    const { email, password } = loginDto;
+    const { rut, password } = loginDto;
 
-    const user = await this.userModel.findOne({ email });
+    const user = await this.userModel.findOne({ rut });
     if ( !user ) {
       throw new UnauthorizedException('Not valid credentials - email');
     }
@@ -74,7 +74,6 @@ export class AuthService {
 
     const { password:_, ...rest  } = user.toJSON();
 
-      
     return {
       user: rest,
       token: this.getJwtToken({ id: user.id }),

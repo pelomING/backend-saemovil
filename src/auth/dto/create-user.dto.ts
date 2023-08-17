@@ -14,4 +14,8 @@ export class CreateUserDto {
     @IsNotEmpty()
     password: string;
 
+    @MinLength(10)
+    @IsNotEmpty()
+    rut: string; 
+
 }
