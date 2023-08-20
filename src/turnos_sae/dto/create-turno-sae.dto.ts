@@ -42,11 +42,11 @@ export class CreateTurnoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    fecha_hora_inicio: Date;
+    fecha_hora_inicio: string;
   
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    fecha_hora_final: Date;
+    fecha_hora_final: string;
 
 }

@@ -28,11 +28,14 @@ export class TurnoSae extends Document {
   codigo_oficina: string 
 
   @Prop({ required: true })
-  fecha_hora_inicio: Date;
+  fecha_hora_inicio: string;
 
   @Prop({ required: true })
-  fecha_hora_final: Date;
+  fecha_hora_final: string;
 
+  @Prop({ required: true, default: Date.now })
+  fecha_hora_recepcion: Date;
+  
   @Prop({ default: true })
   isActive: boolean;
 

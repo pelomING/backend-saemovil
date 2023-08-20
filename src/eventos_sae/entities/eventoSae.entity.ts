@@ -31,7 +31,10 @@ export class EventoSae extends Document {
   direccion: string 
 
   @Prop({ required: true })
-  fecha_hora: Date;
+  fecha_hora_ejecucion: string;
+
+  @Prop({ required: true, default: Date.now })
+  fecha_hora_recepcion: Date;
 
   @Prop({ default: true })
   isActive: boolean;

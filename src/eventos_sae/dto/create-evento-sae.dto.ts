@@ -44,4 +44,9 @@ export class CreateEventoSaeDto {
     @MaxLength(600)
     direccion: string 
 
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(20)
+    fecha_hora_ejecucion: string
+
 }
