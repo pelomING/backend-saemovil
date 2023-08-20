@@ -1,6 +1,6 @@
 import {IsString,IsNotEmpty,MaxLength} from 'class-validator';
  
-export class CreateTurnoDto {
+export class CreateOficinaDto {
   
     @IsString()
     @IsNotEmpty()
@@ -9,7 +9,7 @@ export class CreateTurnoDto {
   
     @IsString()
     @IsNotEmpty()
-    @MaxLength(12)
-    horario: string;
+    @MaxLength(100)
+    nombre: string;
     
 }
