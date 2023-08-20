@@ -1,9 +1,38 @@
 import { Module } from '@nestjs/common';
-import { OficinasService } from './oficinas.service';
 import { OficinasController } from './oficinas.controller';
+import { OficinasService } from './oficinas.service';
+
+import { MongooseModule } from '@nestjs/mongoose';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
+
+import { Oficina,OficinaSchema } from './entities/oficina.entity';
+
+import { AuthModule } from '../auth/auth.module';
+
 
 @Module({
   controllers: [OficinasController],
-  providers: [OficinasService]
+  providers: [OficinasService],
+  imports: [
+    ConfigModule.forRoot(),
+
+    MongooseModule.forFeature([
+      {
+        name: Oficina.name,
+        schema: OficinaSchema
+      }
+    ]),
+
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SEED,
+      signOptions: { expiresIn: '6h' },
+    }),
+
+    AuthModule
+
+  ]
 })
+
 export class OficinasModule {}
