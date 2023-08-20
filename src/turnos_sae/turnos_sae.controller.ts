@@ -18,7 +18,7 @@ export class TurnosSaeController {
     }  
 
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.turnosSaeService.findAll();
     }

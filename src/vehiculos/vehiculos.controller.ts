@@ -18,7 +18,7 @@ export class VehiculosController {
     }  
 
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.vehiculosService.findAll();
     }

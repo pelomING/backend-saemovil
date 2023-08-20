@@ -14,17 +14,29 @@ export class EventoSae extends Document {
 
   @Prop({ required: true })
   rut_maestro: string;
+  
+  @Prop({ required: true })
+  rut_ayudante: string;
 
   @Prop({ required: true })
   codigo_turno: string;
 
-  @Prop({ required: true, default: Date.now })
+  @Prop({ required: true })
+  codigo_oficina: string 
+
+  @Prop({ required: true })
+  requerimiento: string 
+
+  @Prop({ required: true })
+  direccion: string 
+
+  @Prop({ required: true })
   fecha_hora: Date;
 
   @Prop({ default: true })
   isActive: boolean;
 
-  @Prop({ required: true, default: 1 })
+  @Prop({ default: 1 })
   estado_envio: number;
 
 }

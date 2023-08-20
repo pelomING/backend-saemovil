@@ -11,7 +11,7 @@ export class CreateTurnoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    tipo_turno: string;
+    codigo_turno: string;
   
     @IsString()
     @IsNotEmpty()
@@ -27,11 +27,26 @@ export class CreateTurnoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    klm_inicia: string;
+    km_inicia: string;
   
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    klm_final: string;
+    km_final: string;
+
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(6)
+    codigo_oficina: string 
+
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(12)
+    fecha_hora_inicio: Date;
+  
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(12)
+    fecha_hora_final: Date;
 
 }

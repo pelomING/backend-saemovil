@@ -20,7 +20,7 @@ export class TurnosController {
 
 
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.turnosService.findAll();
     }

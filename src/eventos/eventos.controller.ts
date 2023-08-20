@@ -18,7 +18,7 @@ export class EventosController {
     }  
     
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.eventosService.findAll();
     }

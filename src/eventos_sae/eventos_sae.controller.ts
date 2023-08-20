@@ -18,7 +18,7 @@ export class EventosSaeController {
     }  
 
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.eventosSaeService.findAll();
     }

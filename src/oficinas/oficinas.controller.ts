@@ -18,7 +18,7 @@ export class OficinasController {
     }  
     
     @UseGuards( AuthGuard )
-    @Get()
+    @Get('/find-all')
     findAll( @Request() req: Request ) {
       return this.oficinasService.findAll();
     }
