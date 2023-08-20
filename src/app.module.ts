@@ -13,6 +13,7 @@ import { EventosModule } from './eventos/eventos.module';
 
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path'; // Importa el módulo 'path' de Node.js
+import { OficinasModule } from './oficinas/oficinas.module';
 
 @Module({
   imports: [
@@ -27,18 +28,13 @@ import { join } from 'path'; // Importa el módulo 'path' de Node.js
     }),
     
     AuthModule,
-
     TurnosSaeModule,
-
     EventosSaeModule,
-
     VehiculosModule,
-
     TurnosModule,
-
     AyudantesModule,
-
     EventosModule,
+    OficinasModule,
 
   ],
   controllers: [],
