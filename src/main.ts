@@ -1,10 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-
 import { AppModule } from './app.module';
-
-import { setGlobalConfig } from 'luxon';
-
+import { format, utcToZonedTime } from 'date-fns-tz';
 
 
 async function bootstrap() {
@@ -19,10 +16,11 @@ async function bootstrap() {
     })
   );
 
-  setGlobalConfig({
-    zone: 'America/Santiago', // Establece la zona horaria de Chile
+  const nDate = new Date().toLocaleString('es-ES', {
+    timeZone: 'America/Santiago'
   });
-  
+
+  console.log("FECHA HOY:",nDate)
 
   const PORT = process.env.PORT ?? 3000;
     

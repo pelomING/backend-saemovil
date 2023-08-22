@@ -1,26 +1,17 @@
 import { BadRequestException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
-
-import * as bcryptjs from 'bcryptjs';
 
 import { CreateOficinaDto } from './dto/create-oficina.dto';
 import { Oficina } from './entities/oficina.entity';
 
-//import { JwtPayload } from './interfaces/jwt-payload';
-//import { LoginResponse } from './interfaces/login-response';
-
 @Injectable()
 export class OficinasService {
 
-
     constructor(
         @InjectModel( Oficina.name ) 
-        private oficinaModel: Model<Oficina>,
-        private jwtService: JwtService,
+        private oficinaModel: Model<Oficina>
     ) {}
-
 
     async create(createOficinaDto: CreateOficinaDto): Promise<Oficina> {
 
@@ -54,8 +45,5 @@ export class OficinasService {
     async findAll(): Promise<Oficina[]> {
         return this.oficinaModel.find();
     }
-
-
-
 
 }
