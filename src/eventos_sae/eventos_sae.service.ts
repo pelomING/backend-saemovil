@@ -40,6 +40,7 @@ export class EventosSaeService {
             });
 
             newEventoSae.fecha_hora_recepcion = new Date(fecha);
+            
 
             await newEventoSae.save();
             const { ...eventoSae } = newEventoSae.toJSON();
