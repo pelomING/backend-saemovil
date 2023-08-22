@@ -27,11 +27,13 @@ export class EventosSaeService {
 
         try {
             
+            let fecha = formatInTimeZone(new Date());
+
             const { ...eventoSaeData } = createEventoSaeDto;
                 
             const newEventoSae = new this.eventoSaeModel({
             ...eventoSaeData,
-            fecha_hora_recepcion: formatInTimeZone(new Date())
+            fecha_hora_recepcion: fecha
             });
 
             await newEventoSae.save();

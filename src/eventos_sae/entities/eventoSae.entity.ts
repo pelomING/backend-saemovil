@@ -33,7 +33,7 @@ export class EventoSae extends Document {
   @Prop({ required: true })
   fecha_hora_ejecucion: string;
 
-  @Prop({ required: true, default: Date.now })
+  @Prop({ required: true })
   fecha_hora_recepcion: Date;
 
   @Prop({ default: true })
