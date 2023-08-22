@@ -5,9 +5,6 @@ import { AppModule } from './app.module';
 
 import { setGlobalConfig } from 'luxon';
 
-setGlobalConfig({
-  zone: 'America/Santiago', // Establece la zona horaria de Chile
-});
 
 
 async function bootstrap() {
@@ -21,6 +18,11 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     })
   );
+
+  setGlobalConfig({
+    zone: 'America/Santiago', // Establece la zona horaria de Chile
+  });
+  
 
   const PORT = process.env.PORT ?? 3000;
     
