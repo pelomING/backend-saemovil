@@ -45,6 +45,9 @@ export class EventosSaeService {
             return eventoSae;
             
         } catch (error) {
+
+            console.error('Error en la solicitud HTTP:', error);
+
             if( error.code === 11000 ) {
             throw new BadRequestException(`${ createEventoSaeDto.rut_maestro } already exists!`)
             }
