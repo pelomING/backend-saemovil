@@ -24,7 +24,7 @@ export class EventosSaeService {
        ) {}
 
     async create(createEventoSaeDto: CreateEventoSaeDto): Promise<EventoSae> {
-
+ 
         try {
             
             const { ...eventoSaeData } = createEventoSaeDto;

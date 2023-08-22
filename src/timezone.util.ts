@@ -7,5 +7,4 @@ export function formatInTimeZone(date: Date): Date {
   console.log(zonedDate);
    return zonedDate;
   //return format(zonedDate, formatString, { timeZone });
-
 }

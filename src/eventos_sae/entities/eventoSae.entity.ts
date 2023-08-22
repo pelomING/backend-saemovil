@@ -5,7 +5,7 @@ import { Document } from 'mongoose';
 export class EventoSae extends Document {
 
   _id?: string;
-
+ 
   @Prop({ required: true })
   num_ot: string;
 

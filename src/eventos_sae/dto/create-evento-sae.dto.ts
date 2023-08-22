@@ -1,10 +1,10 @@
 import {IsString,IsNotEmpty,MaxLength,Matches} from 'class-validator';
 
 export class CreateEventoSaeDto {
-
+ 
     @IsString()
     @IsNotEmpty()
-    @MaxLength(10)
+    @MaxLength(20)
     num_ot: string;
 
     @IsString()
