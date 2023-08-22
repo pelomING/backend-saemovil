@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, Unauthor
 import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
+import { formatInTimeZone } from '../timezone.util';
 
 import * as bcryptjs from 'bcryptjs';
 
@@ -33,12 +34,17 @@ export class TurnosSaeService {
             ...turnoData
           });
     
+          newTurno.fecha_hora_recepcion = formatInTimeZone(new Date());
+
            await newTurno.save();
            const { ...turno } = newTurno.toJSON();
            
            return turno;
           
         } catch (error) {
+
+          console.error('Error en la solicitud HTTP:', error);
+          
           if( error.code === 11000 ) {
             throw new BadRequestException(`${ createTurnoDto.rut_maestro } already exists!`)
           }

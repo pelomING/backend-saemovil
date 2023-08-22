@@ -33,7 +33,7 @@ export class TurnoSae extends Document {
   @Prop({ required: true })
   fecha_hora_final: string;
 
-  @Prop({ required: true, default: Date.now })
+  @Prop({ required: true })
   fecha_hora_recepcion: Date;
   
   @Prop({ default: true })
