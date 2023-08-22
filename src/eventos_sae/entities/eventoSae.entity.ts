@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { formatInTimeZone } from '../../timezone.util';
 
 @Schema()
 export class EventoSae extends Document {
@@ -34,7 +33,7 @@ export class EventoSae extends Document {
   @Prop({ required: true })
   fecha_hora_ejecucion: string;
 
-  @Prop({ required: true, default: formatInTimeZone(new Date()) })
+  @Prop({ required: true, default: Date.now })
   fecha_hora_recepcion: Date;
 
   @Prop({ default: true })

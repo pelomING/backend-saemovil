@@ -65,7 +65,7 @@ export class AuthService {
 
     const user = await this.userModel.findOne({ rut });
     if ( !user ) {
-      throw new UnauthorizedException('Not valid credentials - email');
+      throw new UnauthorizedException('Not valid credentials - rut');
     }
     
     if ( !bcryptjs.compareSync( password, user.password ) ) {

@@ -2,6 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, Unauthor
 import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
+import { formatInTimeZone } from '../timezone.util';
 
 import * as bcryptjs from 'bcryptjs';
 
@@ -29,7 +30,8 @@ export class EventosSaeService {
             const { ...eventoSaeData } = createEventoSaeDto;
                 
             const newEventoSae = new this.eventoSaeModel({
-            ...eventoSaeData
+            ...eventoSaeData,
+            fecha_hora_recepcion: formatInTimeZone(new Date())
             });
 
             await newEventoSae.save();
