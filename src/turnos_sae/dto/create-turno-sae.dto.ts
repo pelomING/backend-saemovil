@@ -5,13 +5,13 @@ export class CreateTurnoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    @Matches(/^(\d{1,3}(?:\.\d{3})*)-(\d|K)$/, { message: 'El campo rut_maestro debe tener un formato válido de RUT chileno (ej: 12.345.678-9)' })
+    //@Matches(/^(\d{1,3}(?:\.\d{3})*)-(\d|K)$/, { message: 'El campo rut_maestro debe tener un formato válido de RUT chileno (ej: 12.345.678-9)' })
     rut_maestro: string;
   
     @IsString()
     @IsNotEmpty()
     @MaxLength(12)
-    @Matches(/^(\d{1,3}(?:\.\d{3})*)-(\d|K)$/, { message: 'El campo rut_ayudante debe tener un formato válido de RUT chileno (ej: 12.345.678-9)' })
+    //@Matches(/^(\d{1,3}(?:\.\d{3})*)-(\d|K)$/, { message: 'El campo rut_ayudante debe tener un formato válido de RUT chileno (ej: 12.345.678-9)' })
     rut_ayudante: string;
 
     @IsString()
@@ -31,22 +31,22 @@ export class CreateTurnoSaeDto {
   
     @IsString()
     @IsNotEmpty()
-    @MaxLength(12)
+    @MaxLength(30)
     km_inicia: string;
   
     @IsString()
     @IsNotEmpty()
-    @MaxLength(12)
+    @MaxLength(30)
     km_final: string;
 
     @IsString()
     @IsNotEmpty()
-    @MaxLength(12)
+    @MaxLength(50)
     fecha_hora_inicio: string;
   
     @IsString()
     @IsNotEmpty()
-    @MaxLength(12)
+    @MaxLength(50)
     fecha_hora_final: string;
 
 }
