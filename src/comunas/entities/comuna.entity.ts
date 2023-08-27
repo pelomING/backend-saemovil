@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
-export class Oficina extends Document {
+export class Comuna extends Document {
 
   _id?: string;
 
@@ -13,7 +13,7 @@ export class Oficina extends Document {
   nombre: string;
   
   @Prop({ required: true })
-  id_zonal: string;
+  oficina: string;
 
   @Prop({ required: true, default: Date.now })
   fecha_hora: Date;
@@ -23,4 +23,4 @@ export class Oficina extends Document {
   
 }
 
-export const OficinaSchema = SchemaFactory.createForClass(Oficina);
+export const ComunaSchema = SchemaFactory.createForClass(Comuna);

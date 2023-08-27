@@ -15,6 +15,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path'; // Importa el módulo 'path' de Node.js
 import { OficinasModule } from './oficinas/oficinas.module';
 
+import { ComunasModule } from './comunas/comunas.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -35,6 +37,7 @@ import { OficinasModule } from './oficinas/oficinas.module';
     AyudantesModule,
     EventosModule,
     OficinasModule,
+    ComunasModule
 
   ],
   controllers: [],
