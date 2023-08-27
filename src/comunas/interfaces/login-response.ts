@@ -1,6 +1,6 @@
-import { Oficina  } from '../entities/comuna.entity';
+import { Comuna  } from '../entities/comuna.entity';
 
 export interface LoginResponse {
-    user: Oficina;
+    user: Comuna;
     token: string;
 }

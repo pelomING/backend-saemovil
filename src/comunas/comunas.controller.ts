@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Request } from '@nestjs/common';
-import { OficinasService } from './comunas.service';
+import { ComunasService } from './comunas.service';
 import { CreateComunaDto } from './dto/create-comuna.dto';
 import { AuthGuard } from './guards/auth.guard';
 //import { LoginResponse } from './interfaces/login-response';
