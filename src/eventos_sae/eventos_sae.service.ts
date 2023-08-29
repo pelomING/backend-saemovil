@@ -35,6 +35,8 @@ export class EventosSaeService {
 
             newEventoSae.fecha_hora_recepcion = formatInTimeZone(new Date());
             
+            console.log("Datos A Insertar en Eventos:",newEventoSae);
+
             await newEventoSae.save();
             const { ...eventoSae } = newEventoSae.toJSON();
             
