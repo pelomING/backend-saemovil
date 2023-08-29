@@ -32,6 +32,10 @@ export class EventoSae extends Document {
 
   @Prop({ required: true })
   fecha_hora_ejecucion: string;
+ 
+  latitude: string;
+
+  longitude: string;
 
   @Prop({ required: true })
   fecha_hora_recepcion: Date;

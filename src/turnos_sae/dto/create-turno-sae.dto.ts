@@ -49,4 +49,12 @@ export class CreateTurnoSaeDto {
     @MaxLength(50)
     fecha_hora_final: string;
 
+    @IsString()
+    @MaxLength(50)
+    latitude: string;
+
+    @IsString()
+    @MaxLength(50)
+    longitude: string;
+
 }
