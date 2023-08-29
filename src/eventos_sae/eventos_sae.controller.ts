@@ -13,7 +13,7 @@ export class EventosSaeController {
     @UseGuards( AuthGuard )
     @Post()
     create(@Body() createEventoSaeDto: CreateEventoSaeDto)  {
-      console.log(createEventoSaeDto);
+      console.log("Entrando:",createEventoSaeDto);
       return this.eventosSaeService.create(createEventoSaeDto);
     }  
 
