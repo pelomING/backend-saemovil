@@ -33,8 +33,10 @@ export class TurnoSae extends Document {
   @Prop({ required: true })
   fecha_hora_final: string;
    
+  @Prop({ required: true })
   latitude: string;
-    
+
+  @Prop({ required: true })
   longitude: string;
   
   @Prop({ required: true })

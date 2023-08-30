@@ -5,7 +5,8 @@ import { format, utcToZonedTime } from 'date-fns-tz';
 import { ExpressAdapter, NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  //const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, new ExpressAdapter());
 
   app.enableCors();
 
