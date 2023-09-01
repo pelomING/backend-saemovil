@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 
 import { TurnosSaeService } from './turnos_sae.service';
 import { TurnosSaeController } from './turnos_sae.controller';
@@ -21,6 +22,12 @@ import { AuthModule } from '../auth/auth.module';
         schema: TurnoSaeSchema
       }
     ]),
+
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SEED,
+      signOptions: { expiresIn: '48h' },
+    }),
 
     AuthModule
 

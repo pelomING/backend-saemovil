@@ -24,6 +24,13 @@ import { AuthModule } from '../auth/auth.module';
       }
     ]),
 
+
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SEED,
+      signOptions: { expiresIn: '48h' },
+    }),
+    
     AuthModule
 
   ]
