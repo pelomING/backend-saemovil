@@ -57,4 +57,15 @@ export class CreateEventoSaeDto {
     @MaxLength(50)
     longitude: string;
 
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(20)
+    fecha_hora_inicio: string
+
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(20)
+    fecha_hora_termino: string
+
+
 }
