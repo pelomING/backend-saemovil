@@ -60,12 +60,12 @@ export class CreateEventoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(20)
-    fecha_hora_inicio: string
+    hora_inicio: string
 
     @IsString()
     @IsNotEmpty()
     @MaxLength(20)
-    fecha_hora_termino: string
+    hora_termino: string
 
 
 }
