@@ -64,6 +64,7 @@ export class AuthService {
     const { rut, password } = loginDto;
 
     const user = await this.userModel.findOne({ rut });
+    
     if ( !user ) {
       throw new UnauthorizedException('Not valid credentials - rut');
     }

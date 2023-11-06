@@ -45,5 +45,5 @@ export class OficinasService {
     async findAll(): Promise<Oficina[]> {
         return this.oficinaModel.find();
     }
-
+    
 }
