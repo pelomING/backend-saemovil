@@ -11,10 +11,10 @@ export class User {
     @Prop({ required: true })
     name: string;
 
-    @Prop({ minlength: 6, required: true })
+    @Prop({ minlength: 8, required: true })
     password?: string;
 
-    @Prop({ minlength: 10, required: true })
+    @Prop({ minlength: 8, required: true })
     rut?: string;
 
     @Prop({ default: true })
