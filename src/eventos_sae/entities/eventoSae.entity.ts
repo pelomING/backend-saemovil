@@ -10,6 +10,9 @@ export class EventoSae extends Document {
   num_ot: string;
 
   @Prop({ required: true })
+  despachador: string; 
+
+  @Prop({ required: true })
   tipo_evento: string;
 
   @Prop({ required: true })
@@ -18,11 +21,16 @@ export class EventoSae extends Document {
   @Prop({ required: true })
   rut_ayudante: string;
 
-  @Prop({ required: true })
-  codigo_turno: string;
 
   @Prop({ required: true })
-  codigo_oficina: string 
+  codigo_brigada: string;
+
+  @Prop({ required: true })
+  codigo_tipoturno: string 
+
+  @Prop({ required: true })
+  codigo_comuna: string 
+
 
   @Prop({ required: true })
   requerimiento: string 

@@ -13,11 +13,6 @@ export class CreateTurnoSaeDto {
     @MaxLength(14)
     //@Matches(/^(\d{1,3}(?:\.\d{3})*)-(\d|K)$/, { message: 'El campo rut_ayudante debe tener un formato válido de RUT chileno (ej: 12.345.678-9)' })
     rut_ayudante: string;
-
-    @IsString()
-    @IsNotEmpty()
-    @MaxLength(12)
-    codigo_turno: string;
     
     @IsString()
     @IsNotEmpty()
@@ -27,7 +22,12 @@ export class CreateTurnoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(6)
-    codigo_oficina: string 
+    codigo_brigada: string;
+  
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(6)
+    codigo_tipoturno: string 
   
     @IsString()
     @IsNotEmpty()
