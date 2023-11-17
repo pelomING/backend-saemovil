@@ -17,6 +17,12 @@ import { OficinasModule } from './oficinas/oficinas.module';
 
 import { ComunasModule } from './comunas/comunas.module';
 
+import { TipoTurnosModule } from './tiposturnos/tiposturnos.module';
+
+import { SaeBrigadasModule } from './saebrigadas/saebrigadas.module';
+
+
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -29,7 +35,7 @@ import { ComunasModule } from './comunas/comunas.module';
       rootPath: join(__dirname, '..', 'public'), // Ruta a la carpeta pública
     }),
     
-    AuthModule,
+    AuthModule, 
     TurnosSaeModule,
     EventosSaeModule,
     VehiculosModule,
@@ -37,8 +43,10 @@ import { ComunasModule } from './comunas/comunas.module';
     AyudantesModule,
     EventosModule,
     OficinasModule,
-    ComunasModule
-
+    ComunasModule,
+    TipoTurnosModule,
+    SaeBrigadasModule
+  
   ],
   controllers: [],
   providers: [],

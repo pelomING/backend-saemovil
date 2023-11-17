@@ -9,6 +9,11 @@ export class CreateEventoSaeDto {
 
     @IsString()
     @IsNotEmpty()
+    @MaxLength(300)
+    despachador: string 
+
+    @IsString()
+    @IsNotEmpty()
     @MaxLength(6)
     tipo_evento: string;
   
@@ -27,12 +32,17 @@ export class CreateEventoSaeDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(6)
-    codigo_turno: string;
+    codigo_brigada: string;
   
     @IsString()
     @IsNotEmpty()
     @MaxLength(6)
-    codigo_oficina: string 
+    codigo_tipoturno: string 
+
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(6)
+    codigo_comuna: string 
   
     @IsString()
     @IsNotEmpty()

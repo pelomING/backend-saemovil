@@ -8,10 +8,7 @@ export class TurnoSae extends Document {
 
   @Prop({ required: true })
   rut_maestro: string;
-
-  @Prop({ required: true })
-  codigo_turno: string;
-
+  
   @Prop({ required: true })
   rut_ayudante: string;
 
@@ -24,8 +21,13 @@ export class TurnoSae extends Document {
   @Prop({ required: true })
   km_final: string;
 
+
   @Prop({ required: true })
-  codigo_oficina: string 
+  codigo_brigada: string;
+
+  @Prop({ required: true })
+  codigo_tipoturno: string 
+
 
   @Prop({ required: true })
   fecha_hora_inicio: string;
