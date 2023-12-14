@@ -23,7 +23,8 @@ export class EventosSaeService {
         private jwtService: JwtService,
        ) {}
 
-    async create(createEventoSaeDto: CreateEventoSaeDto): Promise<EventoSae> {
+    async create(createEventoSaeDto: CreateEventoSaeDto): Promise<EventoSae> 
+    {
  
         try {
             

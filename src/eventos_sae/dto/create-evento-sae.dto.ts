@@ -41,6 +41,15 @@ export class CreateEventoSaeDto {
 
     @IsString()
     @IsNotEmpty()
+    patente_vehiculo: string
+
+    @IsString()
+    @IsNotEmpty()
+    fecha_hora_inicio_turno: string
+
+
+    @IsString()
+    @IsNotEmpty()
     @MaxLength(6)
     codigo_comuna: string 
   

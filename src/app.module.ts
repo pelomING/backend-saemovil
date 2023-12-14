@@ -1,4 +1,8 @@
 import { Module } from '@nestjs/common';
+
+import { forwardRef } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
+
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
@@ -21,10 +25,15 @@ import { TipoTurnosModule } from './tiposturnos/tiposturnos.module';
 
 import { SaeBrigadasModule } from './saebrigadas/saebrigadas.module';
 
+import { TasksModule } from './Tasks/Tasks/tasks.module';
 
 
 @Module({
   imports: [
+    
+    ScheduleModule.forRoot(),
+    forwardRef(() => TasksModule), // Importa el módulo de tareas si es necesario
+
     ConfigModule.forRoot(),
 
     MongooseModule.forRoot( process.env.MONGO_URI, {
@@ -52,5 +61,11 @@ import { SaeBrigadasModule } from './saebrigadas/saebrigadas.module';
   providers: [],
 })
 export class AppModule {
+
+
+  constructor() {
+    console.log(process.env.MONGO_URI);
+  }
+  
 
 }

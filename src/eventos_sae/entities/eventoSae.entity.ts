@@ -33,6 +33,14 @@ export class EventoSae extends Document {
 
 
   @Prop({ required: true })
+  patente_vehiculo: string
+
+  @Prop({ required: true })
+  fecha_hora_inicio_turno: string
+
+
+
+  @Prop({ required: true })
   requerimiento: string 
 
   @Prop({ required: true })
