@@ -57,7 +57,17 @@ export class CreateEventoSaeDto {
     @IsNotEmpty()
     @MaxLength(600)
     requerimiento: string 
-  
+    
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(600)
+    trabajo_solicitado: string 
+    
+    @IsString()
+    @IsNotEmpty()
+    @MaxLength(600)
+    trabajo_realizado: string 
+        
     @IsString()
     @IsNotEmpty()
     @MaxLength(600)

@@ -39,37 +39,54 @@ export class EventoSae extends Document {
   fecha_hora_inicio_turno: string
 
 
-
   @Prop({ required: true })
   requerimiento: string 
+
+
+  @Prop({ required: true })
+  trabajo_solicitado: string 
+
+
+  @Prop({ required: true })
+  trabajo_realizado: string 
+
 
   @Prop({ required: true })
   direccion: string 
 
+
   @Prop({ required: true })
   fecha_hora_ejecucion: string;
- 
+  
+
   @Prop({ required: true })
   hora_inicio: string;
+
 
   @Prop({ required: true })
   hora_termino: string;
 
+
   @Prop({ required: true })
   latitude: string;
+
 
   @Prop({ required: true })
   longitude: string;
 
+
   @Prop({ required: true })
   fecha_hora_recepcion: Date;
+
 
   @Prop({ default: true })
   isActive: boolean;
 
+
   @Prop({ default: 1 })
   estado_envio: number;
 
+  
 }
 
 export const EventoSchema = SchemaFactory.createForClass(EventoSae);
