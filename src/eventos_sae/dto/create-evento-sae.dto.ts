@@ -53,9 +53,6 @@ export class CreateEventoSaeDto {
     @MaxLength(6)
     codigo_comuna: string 
   
-    @IsString()
-    @MaxLength(0)
-    requerimiento: string 
     
     @IsString()
     @IsNotEmpty()

@@ -39,8 +39,6 @@ export class EventoSae extends Document {
   fecha_hora_inicio_turno: string
 
 
-  requerimiento: string 
-
 
   @Prop({ required: true })
   trabajo_solicitado: string 
