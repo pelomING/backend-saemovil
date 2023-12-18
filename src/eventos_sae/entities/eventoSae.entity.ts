@@ -39,7 +39,6 @@ export class EventoSae extends Document {
   fecha_hora_inicio_turno: string
 
 
-  @Prop({ required: true })
   requerimiento: string 
 
 
@@ -86,7 +85,7 @@ export class EventoSae extends Document {
   @Prop({ default: 1 })
   estado_envio: number;
 
-  
+
 }
 
 export const EventoSchema = SchemaFactory.createForClass(EventoSae);
