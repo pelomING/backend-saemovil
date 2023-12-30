@@ -27,7 +27,7 @@ export class TasksService {
   @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
 
-    console.log('Ejecutando tarea programada cada 1 hora');
+    console.log('Ejecutando tarea programada cada 1 Hora');
 
     console.log('Ejecutando Obtener Ayudantes');
     
@@ -61,7 +61,7 @@ export class TasksService {
 
           try {
             const ayudantesParaInsertar = listaAyudantes.map(ayudante => ({
-              rut_ayudante: ayudante.rut,
+              rut: ayudante.rut,
               nombre: ayudante.nombre
             }));
 
