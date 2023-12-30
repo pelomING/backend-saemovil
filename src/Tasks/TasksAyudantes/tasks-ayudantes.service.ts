@@ -4,14 +4,10 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { catchError, map, mapTo } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import mongoose, { Connection, Model } from 'mongoose';
-
-import { Test, TestModel } from './crear.model';
-
-
-import { User, UserSchema } from '../../auth/entities/user.entity';
+import { Connection, Model } from 'mongoose';
+import { ayudante } from './ayudante.model';
+import { Ayudante } from 'src/ayudantes/entities/ayudante.entity';
 
 
 
@@ -23,18 +19,18 @@ export class TasksService {
 
   constructor(private readonly httpService: HttpService,
     @InjectConnection() private readonly connection: Connection,
-    @InjectModel(User.name)
-    private userModel: Model<User>,
+    @InjectModel(Ayudante.name)
+    private ayudanteModel: Model<Ayudante>,
   ) { }
 
 
   @Cron(CronExpression.EVERY_HOUR)
   async handleCron() {
 
-    console.log('Ejecutando tarea programada cada 1 Hora');
+    console.log('Ejecutando tarea programada cada 1 hora');
 
-    console.log('Ejecutando Obtener usuarios');
-
+    console.log('Ejecutando Obtener Ayudantes');
+    
     console.log(await this.checkMongoDBConnection());
 
     try {
@@ -45,53 +41,59 @@ export class TasksService {
       //console.log("login response : ",loginResponse);
 
 
-      //Obtener usuarios
-      const usersResponse = await this.getUsers();
+      //Obtener ayudantes
+      const usersResponse = await this.getAyudantes();
 
-      //Obtener usuarios 
-      const test: Test[] = usersResponse.data;
+      //Obtener ayudantes 
+      const listaAyudantes: ayudante[] = usersResponse.data;
 
-      console.log("cantidad usuarios : ", test.length);
+      console.log("cantidad ayudantes : ", listaAyudantes.length);
 
-      //Insertar usuarios en MongoDB
+      //Insertar Ayudantes en MongoDB
       try {
 
-
         // Limpiar la tabla antes de insertar
-        await this.userModel.deleteMany({});
+        await this.ayudanteModel.deleteMany({});
 
 
         // Insertar usuarios en MongoDB
-        if (test.length > 0) {
+        if (listaAyudantes.length > 0) {
 
           try {
-            const usuariosParaInsertar = test.map(user => ({
-              email: user.rut,
-              name: user.nombre,
-              password: user.password,
-              rut: user.rut,
-              isActive: true,
-              roles: user.rol
+            const ayudantesParaInsertar = listaAyudantes.map(ayudante => ({
+              rut_ayudante: ayudante.rut,
+              nombre: ayudante.nombre
             }));
 
-            await this.userModel.insertMany(usuariosParaInsertar);
-            console.log('Usuarios insertados en MongoDB con éxito');
+            await this.ayudanteModel.insertMany(ayudantesParaInsertar);
+
+            console.log('Ayudantes insertados en MongoDB con éxito');
 
           } catch (error) {
-            console.error('Error al insertar usuarios en MongoDB:', error);
+
+            console.error('Error al insertar ayudantes en MongoDB:', error);
+          
           }
+
           
         } else {
-          console.log('No hay usuarios para insertar en MongoDB');
+
+          console.log('No hay ayudantes para insertar en MongoDB');
+        
         }
 
       } catch (e) {
-        console.error('Error al insertar usuarios en MongoDB:', e);
+
+        console.error('Error al insertar ayudantes en MongoDB:', e);
+      
       }
 
     } catch (error) {
+
       console.error('Error en la tarea:', error);
+    
     }
+
   }
 
 
@@ -118,12 +120,12 @@ export class TasksService {
   }
 
 
-  getUsers(): Promise<AxiosResponse<Test[]>> {
+  getAyudantes(): Promise<AxiosResponse<ayudante[]>> {
 
-    return this.httpService.get(`${this.baseUrl}/api/movil/v1/usuariosapp`, this.getAxiosConfig())
+    return this.httpService.get(`${this.baseUrl}/api/movil/v1/ayudantes`, this.getAxiosConfig())
       .pipe(
-        map((users) => {
-          return users;
+        map((ayudantes) => {
+          return ayudantes;
         }),
         catchError((error) => {
           console.error(error.response.status);
