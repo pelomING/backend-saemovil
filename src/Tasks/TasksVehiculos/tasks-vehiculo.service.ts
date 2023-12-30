@@ -4,14 +4,12 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { catchError, map, mapTo } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
-
 import { InjectConnection, InjectModel } from '@nestjs/mongoose';
-import mongoose, { Connection, Model } from 'mongoose';
+import { Connection, Model } from 'mongoose';
 
-import { Test, TestModel } from './crear.model';
+import { vehiculo } from './vehiculo.model';
 
-
-import { User, UserSchema } from '../../auth/entities/user.entity';
+import { Vehiculo } from 'src/vehiculos/entities/vehiculo.entity';
 
 
 
@@ -23,8 +21,8 @@ export class TasksService {
 
   constructor(private readonly httpService: HttpService,
     @InjectConnection() private readonly connection: Connection,
-    @InjectModel(User.name)
-    private userModel: Model<User>,
+    @InjectModel(Vehiculo.name)
+    private vehiculoModel: Model<Vehiculo>,
   ) { }
 
 
@@ -33,8 +31,8 @@ export class TasksService {
 
     console.log('Ejecutando tarea programada cada 1 Hora');
 
-    console.log('Ejecutando Obtener usuarios');
-
+    console.log('Ejecutando Obtener vehiculos');
+    
     console.log(await this.checkMongoDBConnection());
 
     try {
@@ -45,53 +43,59 @@ export class TasksService {
       //console.log("login response : ",loginResponse);
 
 
-      //Obtener usuarios
-      const usersResponse = await this.getUsers();
+      //Obtener ayudantes
+      const usersResponse = await this.getCamionetas();
 
-      //Obtener usuarios 
-      const test: Test[] = usersResponse.data;
+      //Obtener ayudantes 
+      const listaCamionetas: vehiculo[] = usersResponse.data;
 
-      console.log("cantidad usuarios : ", test.length);
+      console.log("cantidad vehiculo : ", listaCamionetas.length);
 
-      //Insertar usuarios en MongoDB
+      //Insertar Ayudantes en MongoDB
       try {
 
-
         // Limpiar la tabla antes de insertar
-        await this.userModel.deleteMany({});
+        await this.vehiculoModel.deleteMany({});
 
 
         // Insertar usuarios en MongoDB
-        if (test.length > 0) {
+        if (listaCamionetas.length > 0) {
 
           try {
-            const usuariosParaInsertar = test.map(user => ({
-              email: user.rut,
-              name: user.nombre,
-              password: user.password,
-              rut: user.rut,
-              isActive: true,
-              roles: user.rol
+            const vehiculosParaInsertar = listaCamionetas.map(vehiculo => ({
+              marca: vehiculo.marca,
+              patente: vehiculo.patente
             }));
 
-            await this.userModel.insertMany(usuariosParaInsertar);
-            console.log('Usuarios insertados en MongoDB con éxito');
+            await this.vehiculoModel.insertMany(vehiculosParaInsertar);
+
+            console.log('Vehiculos insertados en MongoDB con éxito');
 
           } catch (error) {
-            console.error('Error al insertar usuarios en MongoDB:', error);
+
+            console.error('Error al insertar Vehiculos en MongoDB:', error);
+          
           }
+
           
         } else {
-          console.log('No hay usuarios para insertar en MongoDB');
+
+          console.log('No hay Vehiculos para insertar en MongoDB');
+        
         }
 
       } catch (e) {
-        console.error('Error al insertar usuarios en MongoDB:', e);
+
+        console.error('Error al insertar Vehiculos en MongoDB:', e);
+      
       }
 
     } catch (error) {
+
       console.error('Error en la tarea:', error);
+    
     }
+
   }
 
 
@@ -118,12 +122,12 @@ export class TasksService {
   }
 
 
-  getUsers(): Promise<AxiosResponse<Test[]>> {
+  getCamionetas(): Promise<AxiosResponse<vehiculo[]>> {
 
-    return this.httpService.get(`${this.baseUrl}/api/movil/v1/usuariosapp`, this.getAxiosConfig())
+    return this.httpService.get(`${this.baseUrl}/api/movil/v1/camionetas`, this.getAxiosConfig())
       .pipe(
-        map((users) => {
-          return users;
+        map((ayudantes) => {
+          return ayudantes;
         }),
         catchError((error) => {
           console.error(error.response.status);

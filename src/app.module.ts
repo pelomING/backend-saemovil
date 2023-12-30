@@ -27,13 +27,19 @@ import { SaeBrigadasModule } from './saebrigadas/saebrigadas.module';
 
 import { TasksModule } from './Tasks/Tasks/tasks.module';
 
+import { TasksAyudanteModule  } from './Tasks/TasksAyudantes/tasks-ayudantes.module';
+
+import { TasksVehiculoModule } from './Tasks/TasksVehiculos/tasks-vehiculo.module';
+
 
 @Module({
   imports: [
     
     ScheduleModule.forRoot(),
-    forwardRef(() => TasksModule), // Importa el módulo de tareas si es necesario
-
+    forwardRef(() => TasksModule ), // Importa el módulo de tareas si es necesario
+    forwardRef(() => TasksAyudanteModule ),
+    forwardRef(() => TasksVehiculoModule ),
+      
     ConfigModule.forRoot(),
 
     MongooseModule.forRoot( process.env.MONGO_URI, {

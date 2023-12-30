@@ -7,7 +7,7 @@ export class Ayudante extends Document {
   _id?: string;
 
   @Prop({ required: true })
-  rut_ayudante: string;
+  rut: string;
 
   @Prop({ required: true })
   nombre: string;
